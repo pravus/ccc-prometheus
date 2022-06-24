@@ -28,4 +28,4 @@ WORKDIR /opt/prometheus
 
 ENV PATH /opt/prometheus:$PATH
 
-ENTRYPOINT ["/opt/prometheus/prometheus"]
+ENTRYPOINT ["/opt/prometheus/prometheus", "--storage.tsdb.retention.time=90d"]
