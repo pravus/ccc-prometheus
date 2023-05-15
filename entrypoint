@@ -1,0 +1,5 @@
+#!/bin/sh
+
+[[ "$STORAGE_TSDB_RETENTION_TIME" == "" ]] && STORAGE_TSDB_RETENTION_TIME=90d
+
+exec /opt/prometheus/prometheus --storage.tsdb.retention.time="${STORAGE_TSDB_RETENTION_TIME}"

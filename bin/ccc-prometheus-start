@@ -1,0 +1,12 @@
+#!/bin/bash
+
+/usr/bin/docker stop prometheus
+/usr/bin/docker rm prometheus
+exec /usr/bin/docker run "$@" \
+  --rm \
+  --name prometheus \
+  --network host \
+  --publish 127.0.0.1:9090:9090 \
+  --volume /opt/ccc/etc/prometheus/prometheus.yml:/opt/prometheus/prometheus.yml:ro \
+  --volume /opt/ccc/var/prometheus/data:/opt/prometheus/data \
+  ccc-prometheus:2.44.0
