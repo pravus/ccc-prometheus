@@ -1,10 +1,10 @@
 #!/bin/bash
 
-/usr/bin/docker stop prometheus
-/usr/bin/docker rm prometheus
+/usr/bin/docker stop ccc-prometheus
+/usr/bin/docker rm ccc-prometheus
 exec /usr/bin/docker run "$@" \
   --rm \
-  --name prometheus \
+  --name ccc-prometheus \
   --network host \
   --publish 127.0.0.1:9090:9090 \
   --volume /opt/ccc/etc/prometheus/prometheus.yml:/opt/prometheus/prometheus.yml:ro \
