@@ -1,7 +1,7 @@
 FROM alpine:3 AS builder
 
-ENV PROMETHEUS_VERSION 2.44.0
-ENV PROMETHEUS_SHA256 be5c8e43618999c3109c1416e04e4ce25c689f82388db6d275a245fe5b1daae7
+ENV PROMETHEUS_VERSION=2.44.0
+ENV PROMETHEUS_SHA256=be5c8e43618999c3109c1416e04e4ce25c689f82388db6d275a245fe5b1daae7
 
 RUN apk --no-cache update \
  && apk --no-cache upgrade \
@@ -27,7 +27,7 @@ COPY --from=builder /opt/prometheus /opt/prometheus
 WORKDIR /opt/prometheus
 
 ENV ENV=/root/.ashrc
-ENV PATH /opt/prometheus:$PATH
+ENV PATH=/opt/prometheus:$PATH
 
 COPY entrypoint /
 COPY root /root
